@@ -1,5 +1,101 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>
+        Calculator
+    </title>
+
+    <style>
+
+    </style>
+</head>
 <body>
-<p>Hello</p>
+    <h1>Calculator</h1>
+
+        <!-- Number inputs -->
+        <label for="number1">Number 1</label>
+        <input type="text" id="number1">
+
+        <label for=""number2">Number 2</label>
+        <input type="text" id="number2">
+        <p></p>
+       
+        <!-- Radio Buttons -->
+        <input type="radio" name="radioGroup" value="add">
+        <label for="add">Add</label><br>
+        <input type="radio" name="radioGroup" value="subtract">
+        <label for="subtract">Subtract</label><br>
+        <input type="radio" name="radioGroup" value="multiply">
+        <label for="multiply">Multiply</label><br>
+        <input type="radio" name="radioGroup" value="divide">
+        <label for="divide">Divide</label>
+       
+        <br>
+        <button id="calculate">Calculate</button>
+
+
+    <!-- Display the result in this empty paragraph -->
+    <p id="result"></p>
+
+    <script>
+
+        //  Mathematical operation functions
+        function add(num1, num2) {
+            return (parseFloat(num1) + parseFloat(num2));
+        }
+
+        function subtract(num1, num2) {
+            return (num1 - num2);
+        }
+
+        function multiply(num1, num2) {
+            return (num1 * num2);
+        }
+
+        function divide(num1, num2) {
+            return (num1 / num2);
+        }
+
+        // Get the result and post result on page
+        function getResult() {
+
+            // Get the two numbers
+            let num1 = document.getElementById("number1").value;
+            let num2 = document.getElementById("number2").value;
+
+            // Get the value of the checked radio button
+            let rbValue = document.querySelector('input[name="radioGroup"]:checked').value;
+
+            
+            switch (rbValue) {
+                case 'add':
+                    result = add(num1, num2);
+                    document.getElementById('result').innerText = result;
+                    break;
+                case 'subtract':
+                    result = subtract(num1, num2);
+                    document.getElementById('result').innerText = result;
+                    break;
+                case 'multiply':
+                    result = multiply(num1, num2);
+                    document.getElementById('result').innerText = result;
+                    break;
+                case 'divide':
+                    result = divide(num1, num2);
+                    document.getElementById('result').innerText = result;
+                    break;
+                default:
+                    document.getElementById('result').innerText = "Please select an operation";
+                    }
+
+            
+        }
+
+        // Event listener
+        let btnCalculate = document.getElementById('calculate');
+        btnCalculate.addEventListener('click', getResult, false);
+
+    </script>
 </body>
+
 </html>
